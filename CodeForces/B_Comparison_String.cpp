@@ -117,9 +117,9 @@ void solve(int testCase)
 int main()
 {
 #ifdef RASHEDUL
-    freopen("D:\PROGRAMS\CONTEST_CodeForces_Folder\Error.txt", "w", stderr);
-    freopen("D:\PROGRAMS\CONTEST_CodeForces_Folder\in.in", "r", stdin);
-    freopen("D:\PROGRAMS\CONTEST_CodeForces_Folder\out.out", "w", stdout);
+    freopen("D:/PROGRAMS/CONTEST_CodeForces_Folder/Error.txt", "w", stderr);
+    freopen("D:/PROGRAMS/CONTEST_CodeForces_Folder/in.in", "r", stdin);
+    freopen("D:/PROGRAMS/CONTEST_CodeForces_Folder/out.out", "w", stdout);
     auto start1 = high_resolution_clock::now();
 #endif
     fastio();
