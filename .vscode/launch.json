@@ -19,6 +19,26 @@
           "ignoreFailures": true
         }
       ]
-    }
+    },
+    {
+      "name": "deBug",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "${fileDirname}",
+      "program": "${fileDirname}\\zzExecutable.exe",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    },
+
   ]
 }
