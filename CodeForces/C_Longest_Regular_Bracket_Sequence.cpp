@@ -96,8 +96,9 @@ void solve(int testCase)
     string str;
     stack<int> st;
     cin >> str;
-    int maxLen = 0;
-    vector<int> freq(str.length(), 0), extPos(str.length(), 0), valid(str.length(), 0);
+    int maxLen = 0, n = str.length() + 10;
+    vector<int> freq(n, 0), extPos(n, 0), valid(n, 0);
+
     for (int i = 0; i < str.length(); i++)
     {
         if (str[i] == '(')
