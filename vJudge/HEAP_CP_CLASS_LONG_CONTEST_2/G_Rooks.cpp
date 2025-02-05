@@ -93,6 +93,27 @@ bool isPrime(ll num){if (num <= 1)return false;if (num <= 3)return true;if (num 
 bool multiTest = true;
 void solve(int testCase)
 {
+    int n,k,m;
+    cin >> n >> k;
+    m = k;
+    if (n<k){
+        case(testCase) << 0 << nline;
+        return;
+    }
+    ll fact = 1,ans = 1;
+    while(m)
+        fact *= m--;
+    while(k){
+        ll temp = n*n;
+        ll gcd = __gcd(fact,temp);
+        ans *= temp/gcd;
+        n--;
+        k--;    
+        fact/= gcd;
+    }
+    case(testCase) << ans << nline;
+    
+
 }
 int main()
 {

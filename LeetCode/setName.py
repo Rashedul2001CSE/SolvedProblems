@@ -1,5 +1,6 @@
 import pyperclip
 
+
 def transform_string(input_string):
     # Remove periods
     no_periods = input_string.replace('.', '')
@@ -14,6 +15,7 @@ def transform_string(input_string):
     result_string = '_'.join(capitalized_words)
 
     return result_string
+
 
 # Get user input
 input_string = input("Enter a string: ")

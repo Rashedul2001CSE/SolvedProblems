@@ -93,6 +93,51 @@ bool isPrime(ll num){if (num <= 1)return false;if (num <= 3)return true;if (num 
 bool multiTest = true;
 void solve(int testCase)
 {
+    int n;
+    cin >> n;
+    vector<ll> vec(n);
+    rep(a, vec) cin >> a;
+    cout << nline;
+    ll ans = 0;
+    if (vec.size() % 2 == 0)
+    {
+        for (int i = 1; i < n; i += 2)
+        {
+            ans = max(ans, vec[i] - vec[i - 1]);
+        }
+        cout << ans << nline;
+    }
+    else
+    {
+        ans = LLONG_MAX;
+        auto check = [&](vector<ll> vec1)
+        {
+            sort(all(vec1));
+            ll mx = 0;
+            for (int i = 1; i < vec.size(); i++)
+            {
+                if (vec1[i - 1] == vec1[i])
+                {
+                    return;
+                }
+            }
+            for (int i = 1; i < vec1.size(); i += 2)
+            {
+                mx = max(mx, vec1[i] - vec1[i - 1]);
+            }
+            ans = min(ans, mx);
+        };
+        for (int i = 0; i < n; i++)
+        {
+            for (auto x : {-1, 1})
+            {
+                vec.pb(vec[i] + x);
+                check(vec);
+                vec.pop_back();
+            }
+        }
+        cout << ans << nline;
+    }
 }
 int main()
 {
