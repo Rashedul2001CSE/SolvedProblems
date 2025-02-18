@@ -97,6 +97,23 @@ void preCal()
 bool multiTest = true;
 void solve(int testCase)
 {
+    int n;
+    cin>>n;
+    vector<int> vec(n);
+    rep(a, vec) cin>>a;
+    vector<int> vec1 = vec;
+    sort(all(vec1));
+    if ((n&1) and vec1[0] != vec[0]){
+        cout << "NO\n";
+        return;
+    } 
+    for (int i = n-1; i > 0; i-=2){
+        if (max(vec[i], vec[i-1]) != vec1[i] or min(vec[i], vec[i-1]) != vec1[i-1]){
+            cout << "NO\n";
+            return;
+        }
+    }
+    cout << "YES\n";
 }
 int main()
 {

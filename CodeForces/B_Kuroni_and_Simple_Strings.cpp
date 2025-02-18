@@ -90,53 +90,42 @@ ll getRandomNumber(ll l, ll r) {return uniform_int_distribution<ll>(l, r)(rng);}
 bool isPrime(ll num){if (num <= 1)return false;if (num <= 3)return true;if (num % 2 == 0 or num % 3 == 0)return false;for (int i = 5; i * i <= num; i += 6){if (num % i == 0 or num % (i + 2) == 0)return false;}return true;}
 /*--------------------------------------------------------------------------------------------------------------------------*/
 
-bool multiTest = true;
+
+void preCal()
+{
+}
+bool multiTest = false;
 void solve(int testCase)
 {
-    int n;
-    cin >> n;
-    vector<ll> vec(n);
-    rep(a, vec) cin >> a;
-    cout << nline;
-    ll ans = 0;
-    if (vec.size() % 2 == 0)
+    string str;
+    cin >> str;
+    int start = 0, end = str.size() - 1;
+    vector<int> ans;
+    while (start < end)
     {
-        for (int i = 1; i < n; i += 2)
+        while (start < end and str[start] == ')')
+            start++;
+        while (start < end and str[end] == '(')
+            end--;
+        if (start < end)
         {
-            ans = max(ans, vec[i] - vec[i - 1]);
+            ans.push_back(start);
+            ans.push_back(end);
+            start++;
+            end--;
         }
-        cout << ans << nline;
+    }
+    if (ans.size() == 0)
+    {
+        cout << 0 << nline;
     }
     else
     {
-        ans = LLONG_MAX;
-        auto check = [&](vector<ll> vec1)
-        {
-            sort(all(vec1));
-            ll mx = 0;
-            for (int i = 1; i < vec.size(); i++)
-            {
-                if (vec1[i - 1] == vec1[i])
-                {
-                    return;
-                }
-            }
-            for (int i = 1; i < vec1.size(); i += 2)
-            {
-                mx = max(mx, vec1[i] - vec1[i - 1]);
-            }
-            ans = min(ans, mx);
-        };
-        for (int i = 0; i < n; i++)
-        {
-            for (auto x : {-1, 1})
-            {
-                vec.pb(vec[i] + x);
-                check(vec);
-                vec.pop_back();
-            }
-        }
-        cout << ans << nline;
+        cout << 1 << nline;
+        cout << ans.size() << nline;
+        sort(ans.begin(), ans.end());
+        rep(a, ans) cout << a + 1 << " ";
+        cout << nline;
     }
 }
 int main()
@@ -148,6 +137,7 @@ int main()
     auto start1 = high_resolution_clock::now();
 #endif
     fastio();
+    preCal();
 
     int testCase = 1;
     int T{1};

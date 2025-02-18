@@ -94,9 +94,31 @@ bool isPrime(ll num){if (num <= 1)return false;if (num <= 3)return true;if (num 
 void preCal()
 {
 }
-bool multiTest = true;
+bool multiTest = false;
 void solve(int testCase)
 {
+    int n;
+    cin >> n;
+    vector<int> vec(n);
+    rep(a,vec) cin >> a;
+    int odd = 0, even = 0;
+    int oddIndex = 0, evenIndex = 0;
+    rep2(i,n){
+        if(vec[i] % 2 == 0){
+            even++;
+            evenIndex = i;
+        }
+        else{
+            odd++;
+            oddIndex = i;
+        }
+    }
+    if(even == 1){
+        cout << evenIndex+1 << nline;
+    }
+    else{
+        cout << oddIndex+1 << nline;
+    }
 }
 int main()
 {

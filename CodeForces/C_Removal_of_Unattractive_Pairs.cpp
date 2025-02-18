@@ -90,28 +90,24 @@ ll getRandomNumber(ll l, ll r) {return uniform_int_distribution<ll>(l, r)(rng);}
 bool isPrime(ll num){if (num <= 1)return false;if (num <= 3)return true;if (num % 2 == 0 or num % 3 == 0)return false;for (int i = 5; i * i <= num; i += 6){if (num % i == 0 or num % (i + 2) == 0)return false;}return true;}
 /*--------------------------------------------------------------------------------------------------------------------------*/
 
-bool multiTest = false;
+
+void preCal()
+{
+}
+bool multiTest = true;
 void solve(int testCase)
 {
-    ll a,b;
-    cin >> a >> b;
-    for (ll i = a; i<=b;i++){
-        string s = to_string(i);
-        set<char> st;
-        bool flag = true;
-        for (char c : s){
-            if (st.find(c) != st.end()){
-                flag = false;
-                break;
-            }
-            st.insert(c);
-        }
-        if (flag){
-            cout << i << nline;
-            return;
-        }
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    vector<int> cnt(26, 0);
+    rep(a,s){
+        cnt[a-'a']++;
     }
-    cout << -1 << nline;
+    int mx= *max_element(all(cnt));
+    cout <<max(n%2, 2*mx-n)<<nline;
+
 }
 int main()
 {
@@ -122,6 +118,7 @@ int main()
     auto start1 = high_resolution_clock::now();
 #endif
     fastio();
+    preCal();
 
     int testCase = 1;
     int T{1};
