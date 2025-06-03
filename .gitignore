@@ -6,3 +6,12 @@ out.out
 zzExecutable.exe
 a.exe
 temporary.cpp
+.idea/
+.vscode/
+.vs/
+*.exe
+*.out 
+*.o 
+.cph 
+build/
+
