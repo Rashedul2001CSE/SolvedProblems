@@ -26,6 +26,13 @@ using namespace __gnu_pbds;
 #define prec(n) fixed<<setprecision(n)
 #define rep(a,b) for(auto &a : b)
 #define rep1(n) for(ll i=0; i<(ll)(n); ++i)
+#define rep2(i,n) for(ll i=0; i<(ll)(n); ++i)
+#define rep3(i,a,b) for(ll i=(ll)(a); i<(ll)(b); ++i)
+#define rep4(i,a,b,c) for(ll i=(ll)(a); i<(ll)(b); i+=(c))
+#define per1(n) for(ll i=((ll)n)-1; i>=0; --i)
+#define per2(i,n) for(ll i=((ll)n)-1; i>=0; --i)
+#define per3(i,a,b) for(ll i=((ll)a)-1; i>=(ll)(b); --i)
+#define per4(i,a,b,c) for(ll i=((ll)a)-1; i>=(ll)(b); i-=(c))
 #define case(i) cout << "Case " << i << ": "
 
 const int MOD1 = 998244353;
@@ -90,6 +97,38 @@ void preCal()
 bool multiTest = true;
 void solve(int testCase)
 {
+    int n;
+    cin >> n;
+    string a,b;
+    cin >> a >> b;
+    int odd= 0, even=0;
+    for (int i = 0; i < n;i++){
+        if (b[i] == '0' and (i&1)) odd++;
+        if (b[i] == '0' and !(i&1)) even++;
+    }
+    rep2(i, n)
+    {
+        if (a[i] == '1')
+        {
+
+            if ((i & 1) and even > 0)
+            {
+                --even;
+            }
+            else if (!(i & 1) and odd > 0)
+            {
+                odd--;
+            }
+            else
+            {
+                cout << "NO" << nline;
+                return;
+            }
+        }
+    }
+    cout << "YES" << nline;
+
+    
 }
 int main()
 {

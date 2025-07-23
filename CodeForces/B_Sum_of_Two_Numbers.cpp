@@ -1,3 +1,4 @@
+// https://codeforces.com/problemset/problem/1788/B
 #pragma GCC optimize("O3,unroll-loops")
 
 #include<bits/stdc++.h>
@@ -83,13 +84,39 @@ ll getRandomNumber(ll l, ll r) {return uniform_int_distribution<ll>(l, r)(rng);}
 bool isPrime(ll num){if (num <= 1)return false;if (num <= 3)return true;if (num % 2 == 0 or num % 3 == 0)return false;for (int i = 5; i * i <= num; i += 6){if (num % i == 0 or num % (i + 2) == 0)return false;}return true;}
 /*--------------------------------------------------------------------------------------------------------------------------*/
 
-
 void preCal()
 {
 }
 bool multiTest = true;
 void solve(int testCase)
 {
+    string s, ans1, ans2;
+    cin >> s;
+
+    bool flag = true;
+    rep(a, s)
+    {
+        if ((a - '0') % 2 == 0)
+        {
+            ans1.pb('0' + (a - '0') / 2);
+            ans2.pb('0' + (a - '0') / 2);
+        }
+        else
+        {
+            if (flag)
+            {
+                ans1.pb('0' + (a - '0') / 2);
+                ans2.pb('0' + (a - '0') / 2 + 1);
+            }
+            else
+            {
+                ans1.pb('0' + (a - '0') / 2 + 1);
+                ans2.pb('0' + (a - '0') / 2);
+            }
+            flag = !flag;
+        }
+    }
+    cout << stoll(ans1) << " " << stoll(ans2) << nline;
 }
 int main()
 {

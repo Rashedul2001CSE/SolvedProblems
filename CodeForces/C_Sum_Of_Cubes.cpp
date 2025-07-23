@@ -83,13 +83,29 @@ ll getRandomNumber(ll l, ll r) {return uniform_int_distribution<ll>(l, r)(rng);}
 bool isPrime(ll num){if (num <= 1)return false;if (num <= 3)return true;if (num % 2 == 0 or num % 3 == 0)return false;for (int i = 5; i * i <= num; i += 6){if (num % i == 0 or num % (i + 2) == 0)return false;}return true;}
 /*--------------------------------------------------------------------------------------------------------------------------*/
 
+unordered_set<ll> cubes;
 
 void preCal()
 {
+    for (ll i = 1; i* i * i <= 1e12; i++){
+        cubes.insert(i*i*i);
+    }
+    
 }
 bool multiTest = true;
 void solve(int testCase)
 {
+    ll n;
+    cin >> n;
+    for (ll i = 1; i*i*i <= n; i++){
+        if(cubes.count(n-i*i*i)){
+            cout << "YES" << nline;
+            return;
+        }
+    }
+    cout << "NO" << nline;
+
+
 }
 int main()
 {

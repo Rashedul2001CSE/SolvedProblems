@@ -1,3 +1,5 @@
+// https://codeforces.com/problemset/problem/2091/C
+
 #pragma GCC optimize("O3,unroll-loops")
 
 #include<bits/stdc++.h>
@@ -26,6 +28,13 @@ using namespace __gnu_pbds;
 #define prec(n) fixed<<setprecision(n)
 #define rep(a,b) for(auto &a : b)
 #define rep1(n) for(ll i=0; i<(ll)(n); ++i)
+#define rep2(i,n) for(ll i=0; i<(ll)(n); ++i)
+#define rep3(i,a,b) for(ll i=(ll)(a); i<(ll)(b); ++i)
+#define rep4(i,a,b,c) for(ll i=(ll)(a); i<(ll)(b); i+=(c))
+#define per1(n) for(ll i=((ll)n)-1; i>=0; --i)
+#define per2(i,n) for(ll i=((ll)n)-1; i>=0; --i)
+#define per3(i,a,b) for(ll i=((ll)a)-1; i>=(ll)(b); --i)
+#define per4(i,a,b,c) for(ll i=((ll)a)-1; i>=(ll)(b); i-=(c))
 #define case(i) cout << "Case " << i << ": "
 
 const int MOD1 = 998244353;
@@ -80,16 +89,25 @@ void google(int t) {cout << "Case #" << t << ": ";}
 vector<ll> sieve(int n) {int*arr = new int[n + 1](); vector<ll> vect; for (int i = 2; i <= n; i++)if (arr[i] == 0) {vect.push_back(i); for (int j = 2 * i; j <= n; j += i)arr[j] = 1;} return vect;}
 ll phin(ll n) {ll number = n; if (n % 2 == 0) {number /= 2; while (n % 2 == 0) n /= 2;} for (ll i = 3; i <= sqrt(n); i += 2) {if (n % i == 0) {while (n % i == 0)n /= i; number = (number / i * (i - 1));}} if (n > 1)number = (number / n * (n - 1)) ; return number;} //O(sqrt(N))
 ll getRandomNumber(ll l, ll r) {return uniform_int_distribution<ll>(l, r)(rng);} 
-bool isPrime(ll num){if (num <= 1)return false;if (num <= 3)return true;if (num % 2 == 0 or num % 3 == 0)return false;for (int i = 5; i * i <= num; i += 6){if (num % i == 0 or num % (i + 2) == 0)return false;}return true;}
 /*--------------------------------------------------------------------------------------------------------------------------*/
 
-
-void preCal()
-{
-}
 bool multiTest = true;
 void solve(int testCase)
 {
+    ll n;
+    cin >> n;
+    if (n%2 == 0) {
+        cout << -1 << nline;
+        return;
+    }
+    for(int i = 1; i <= n; i+=2){
+        cout << i << " ";
+    }
+    for (int i = 2; i <= n; i+=2){
+        cout << i << " ";
+    }
+    cout << nline;
+
 }
 int main()
 {
@@ -100,7 +118,6 @@ int main()
     auto start1 = high_resolution_clock::now();
 #endif
     fastio();
-    preCal();
 
     int testCase = 1;
     int T{1};
@@ -117,3 +134,5 @@ int main()
     cerr << "Time: " << duration.count() << " ms" << endl;
 #endif
 }
+
+
