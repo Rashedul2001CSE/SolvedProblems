@@ -26,6 +26,7 @@ using namespace __gnu_pbds;
 #define prec(n) fixed<<setprecision(n)
 #define rep(a,b) for(auto &a : b)
 #define rep1(n) for(ll i=0; i<(ll)(n); ++i)
+#define rep2(i,n) for(ll i=0; i<(ll)(n); ++i)
 #define case(i) cout << "Case " << i << ": "
 
 const int MOD1 = 998244353;
@@ -90,6 +91,48 @@ void preCal()
 bool multiTest = true;
 void solve(int testCase)
 {
+    int n, a, b;
+    cin >> n >> a >> b ;
+    if (n-a-b <0){
+        cout << "NO" << nline;
+        return;
+    }
+    vector<int> A(n), B(n);
+    for (int i = n; i > 0; i--) {
+        A[n-i] = i;
+    }
+    int card = n;
+    int equal = n-a-b;
+    for (int i = 0; i <equal; i++) {
+        B[i] = card-- ;
+    }
+    for (int i = n-b; i < n; i++){
+        B[i] = card-- ;
+        if (B[i] <= A[i]) {
+            cout << "NO" << nline;
+            return;
+        }
+    }
+    for (int i = equal; i < n-b; i++) {
+        B[i] = card-- ;
+        if (B[i] >= A[i]) {
+            cout << "NO" << nline;
+            return;
+        }
+    }
+    cout << "YES" << nline;
+    for (int i = 0; i < n; i++) {
+        cout << A[i] << " ";
+    }
+    cout << nline;
+    for (int i = 0; i < n; i++) {
+        cout << B[i] << " ";
+    }
+    cout << nline;
+
+    
+
+
 }
 int main()
 {
