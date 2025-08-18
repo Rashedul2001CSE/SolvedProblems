@@ -1,6 +1,8 @@
 temp/
 .cph/
 Error.txt
+in.txt
+out.txt
 in.in
 out.out
 zzExecutable.exe
